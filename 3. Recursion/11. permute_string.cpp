@@ -3,14 +3,14 @@ using namespace std;
 
 void permute(string &str, int l = 0)
 {
-    r = str.length() - 1;
+    int r = str.length() - 1;
     if(l == r)
     {
         cout << str << " ";
         return;
     }
     
-    for (int i = l, i <= r, ++i)
+    for (int i = l; i <= r; ++i)
     {
         swap(str[i], str[l]);
         permute(str, l + 1);
