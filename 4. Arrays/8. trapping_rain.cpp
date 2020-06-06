@@ -56,7 +56,7 @@ int main()
     int arr[] = {5,0,6,2,3};
     int n = 5;
 
-    cout << "Rainwater [naive]    : " << naive_getWater(arr, n);
+    cout << "Rainwater [naive]    : " << naive_getWater(arr, n) << endl;
     cout << "Rainwater [efficient]: " << getWater(arr, n);
     
     return 0;

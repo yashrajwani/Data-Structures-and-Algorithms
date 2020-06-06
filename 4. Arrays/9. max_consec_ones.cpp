@@ -10,7 +10,7 @@ int naive_maxOnes(int arr[], int n)
     for (int i=0; i < n; ++i)  
     {
         int curr = 0;
-        for (int j = i; i < n; ++i)
+        for (int j = i; i < n; ++j)
         {
             if (arr[j] == 0)  break;
             curr++;
@@ -43,7 +43,7 @@ int main()
     int arr[] = {1, 0, 1, 0, 1, 1, 1, 1, 0};
     int n = 9;
 
-    cout << "Consecutive ones [naive]    : " << naive_maxOnes(arr, n);
+    cout << "Consecutive ones [naive]    : " << naive_maxOnes(arr, n) << endl;
     cout << "Consecutive ones [efficient]: " << maxOnes(arr, n);
     
     return 0;
