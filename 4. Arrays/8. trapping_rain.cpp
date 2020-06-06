@@ -1,31 +1,63 @@
 #include <iostream>
 using namespace std;
 
-
-int rainwater(int arr[], int n)
+int naive_getWater(int arr[], int n)
 {
-    //time-> theta(n)
-    //aux space -> theta(1)
+    //theta n^2 time complexity
+    //theta 1 aux space
 
-    int left = 0, right = n - 1;
-    int ctr = left + 1;
-    while (arr[ctr] > arr[left])    //find local max from left
+    int res = 0;
+    for (int i=1; i< n-1; ++i)  //bars at end can't have water on them
     {
-        left = ctr++;   
+        int lmax = arr[i];
+        for (int j = 0; j < i; ++j)
+            lmax = max(lmax, arr[j]);
+
+        int rmax = arr[i];
+        for (int j = i+1; j < n; ++j)
+            rmax = max(rmax, arr[j]);
+
+        //Water stored on i-th bar
+        res += min(rmax, lmax) - arr[i];
     }
-    
-    ctr = right - 1;
-    while (arr[ctr] > arr[right])   //find local max from right
-    {
-        right = ctr--;
-    }
-    
-    int volume = (right - left - 1) * min(arr[right], arr[left]);
-    if (volume <= 0)    return 0;
-    
-    for (int i = left + 1; i < right; ++i)
-        volume -= min(arr[i], min(arr[right], arr[left]));
-    
-    return volume;
+    return res;
 }
 
+int getWater(int arr[], int n)
+{
+    //theta n time complexity
+    //theta n aux space
+
+    int lmax[n], rmax[n];
+    int res = 0;
+
+    lmax[0] = arr[0];
+    for (int i = 1; i < n; ++i)
+    {
+        lmax[i] = max(arr[i], lmax[i-1]);
+    }
+
+    rmax[n-1] = arr[n-1];
+    for (int i = n-2; i >= 0; --i)
+    {
+        rmax[i] = max(arr[i], rmax[i+1]);
+    }
+
+    for (int i = 1; i < n; ++i)
+    {
+        res += min(lmax[i], rmax[i]) - arr[i];
+    }
+
+    return res;
+}
+
+int main()
+{
+    int arr[] = {5,0,6,2,3};
+    int n = 5;
+
+    cout << "Rainwater [naive]    : " << naive_getWater(arr, n);
+    cout << "Rainwater [efficient]: " << getWater(arr, n);
+    
+    return 0;
+}
