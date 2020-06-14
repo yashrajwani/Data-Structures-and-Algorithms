@@ -15,8 +15,8 @@ int maxIndexDiff(int arr[], int n)
         lmin[i] = min(lmin[i-1], arr[i]);
         
     rmax[n-1] = arr[n-1];
-    for (int i = n-1; i >= 0; ++i)
-        rmax[i] = min(rmax[i+1], arr[i]);
+    for (int i = n-1; i >= 0; --i)
+        rmax[i] = max(rmax[i+1], arr[i]);
         
     i = 0; j = 0; max_diff = -1;
     while ((i < n) && (j < n))
