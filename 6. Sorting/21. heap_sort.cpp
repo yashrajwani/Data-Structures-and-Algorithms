@@ -37,5 +37,6 @@ int main()
     int arr[] = {5,9,8,8,7,4,6,3,0,2,1};      
     heapSort(arr, sizeof(arr)/sizeof(arr[0]));
     for (auto x : arr)  cout << x << " ";
+    
     return 0;
 }
