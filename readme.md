@@ -1,1 +1,1 @@
-## Coursework for DSA [Geeksforgeeks Self Paced Course]
+## Contains coursework for Geeksforgeeks self-paced DSA course. 
