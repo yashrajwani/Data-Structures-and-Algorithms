@@ -22,6 +22,7 @@ void getCofactor (int mat[N][N], int temp[N][N], int p, int q, int n)
                     i++;
                 }
             }
+
 }
 
 int determinant (int mat[N][N], int n)
@@ -60,5 +61,5 @@ int main()
     
     print (mat);
     cout << "Determinant: " << determinant(mat, N);     //-2
-    
+    return 0;
 }
